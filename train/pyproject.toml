@@ -1,0 +1,32 @@
+[project]
+name = "portcullis-train"
+version = "0.1.0"
+description = "Train the Portcullis YOLOv4-tiny detector and export ONNX, INT8 TFLite and Hailo-8L HEF"
+requires-python = "==3.12.*"
+dependencies = []
+
+[project.optional-dependencies]
+# Only the export/compile steps need these; setup, data and train are stdlib-only.
+export = [
+  "onnx2tf[tensorflow]==2.6.9",
+  "onnxsim==0.6.5",  # the version onnx2tf pins on Linux
+  "pillow>=11",
+]
+
+[dependency-groups]
+dev = ["pytest>=8", "ruff>=0.12"]
+
+[tool.uv]
+package = false
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["."]
+addopts = "-ra"
+
+[tool.ruff]
+line-length = 100
+target-version = "py312"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B", "SIM"]
