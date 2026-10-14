@@ -1,0 +1,13 @@
+{
+  "applinks": {
+    "details": [
+      {
+        "appIDs": ["P6569F3JJT.com.sventschui.portcullis"],
+        "components": [
+          { "/": "/invite*", "comment": "Invite links; the data is in the URL fragment" },
+          { "/": "/connect*" }
+        ]
+      }
+    ]
+  }
+}

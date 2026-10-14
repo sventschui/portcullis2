@@ -1,0 +1,7 @@
+*
+!Dockerfile
+!nginx.conf
+!security-headers.conf
+!invite.html
+!invite.css
+!.well-known/apple-app-site-association

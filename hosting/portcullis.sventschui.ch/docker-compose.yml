@@ -1,0 +1,25 @@
+# Example deployment behind Traefik. Adjust the network, entrypoint and cert resolver names.
+services:
+  portcullis-hosting:
+    build: .
+    image: portcullis-hosting:latest
+    restart: unless-stopped
+    read_only: true
+    tmpfs:
+      - /tmp:size=16m,mode=1777
+    cap_drop: [ALL]
+    security_opt: [no-new-privileges:true]
+    pids_limit: 64
+    mem_limit: 64m
+    networks: [traefik]
+    labels:
+      - traefik.enable=true
+      - traefik.docker.network=traefik
+      - traefik.http.routers.portcullis.rule=Host(`portcullis.sventschui.ch`)
+      - traefik.http.routers.portcullis.entrypoints=websecure
+      - traefik.http.routers.portcullis.tls.certresolver=letsencrypt
+      - traefik.http.services.portcullis.loadbalancer.server.port=8080
+
+networks:
+  traefik:
+    external: true
