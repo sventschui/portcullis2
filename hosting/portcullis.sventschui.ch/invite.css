@@ -1,0 +1,6 @@
+:root { color-scheme: light dark; --bg: #f5f6f1; --ink: #193c31; --muted: #69786f; }
+@media (prefers-color-scheme: dark) { :root { --bg: #0d1310; --ink: #e4eee8; --muted: #9baaa1; } }
+body { margin: 0; background: var(--bg); color: var(--ink); font: 17px/1.5 -apple-system, system-ui, sans-serif; }
+main { max-width: 32rem; margin: 0 auto; padding: 2rem 1rem; }
+h1 { font-size: 1.75rem; line-height: 1.2; }
+.note { color: var(--ink); }
